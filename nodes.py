@@ -107,6 +107,30 @@ def main(args: InferenceArgs):
             json.dump(args_dict, f, indent=4)        
 
 
+class LoadImages:
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "refer_image_paths": ("STRING", {"multiline": True, "default": "["./assets/examples", ]"}),
+                "height": ("INT", {"default": 480}),
+                "width": ("INT", {"default": 832}),
+                "device": ("STRING", {"default": "cuda"}),
+            }
+        }
+
+    RETURN_TYPES = ("IMAGE_LIST",)
+    RETURN_NAMES = ("image_paths")
+    FUNCTION = "process_images"
+    CATEGORY = "UNO"
+
+    def process_images(self, refer_image_paths, height, width, device):
+        
+
+        return (image_paths,)
+
+
+
 if __name__ == "__main__":
     parser = HfArgumentParser([InferenceArgs])
     args = parser.parse_args_into_dataclasses()[0]
